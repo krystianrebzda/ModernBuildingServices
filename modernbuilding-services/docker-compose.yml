@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  measurement.api:
+    image: ${DOCKER_REGISTRY-}measurementapi
+    build:
+      context: .
+      dockerfile: Services/Measurement/Measurement.API/Dockerfile

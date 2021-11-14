@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.34.0" />
+    <PackageReference Include="MongoDB.Bson" Version="2.13.2" />
+    <PackageReference Include="MongoDB.Driver" Version="2.13.2" />
   </ItemGroup>
 
   <ItemGroup>

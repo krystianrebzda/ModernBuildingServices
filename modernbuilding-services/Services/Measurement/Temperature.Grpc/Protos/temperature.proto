@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Temperature.Grpc.Protos";
+
+service TemperatureProtoService{
+	rpc GetSensorTemperatures (GetSensorTemperaturesRequest) returns (SensorTemperaturesResponse);
+}
+
+message GetSensorTemperaturesRequest{
+	string sensorName = 1;
+}
+
+message SensorTemperatureModel{
+	string id = 1;
+	string sensorName = 2;
+	double value = 3;
+	string createdBy = 4;
+	google.protobuf.Timestamp createdDate = 5;
+}
+
+message SensorTemperaturesResponse{
+	repeated SensorTemperatureModel sensorTemperatures = 1;
+}

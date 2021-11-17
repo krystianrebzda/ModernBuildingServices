@@ -4,7 +4,7 @@ using System;
 
 namespace Temperature.Grpc.Entities
 {
-    public class TemperatureSensor
+    public class SensorTemperature
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -17,6 +17,6 @@ namespace Temperature.Grpc.Entities
 
         public string CreatedBy { get; set; }
 
-        public DateTime? CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

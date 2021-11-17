@@ -5,6 +5,6 @@ namespace Temperature.Grpc.Context
 {
     public interface ITemperatureContext
     {
-        IMongoCollection<TemperatureSensor> TemperatureSensors { get; }
+        IMongoCollection<SensorTemperature> SensorTemperatures { get; }
     }
 }

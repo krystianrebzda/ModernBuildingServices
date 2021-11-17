@@ -20,7 +20,7 @@ namespace Temperature.Grpc.Extensions
 
                 var client = new MongoClient(configuration.GetValue<string>("TemperatureSensorsDatabaseSettings:ConnectionString"));
                 var database = client.GetDatabase(configuration.GetValue<string>("TemperatureSensorsDatabaseSettings:DatabaseName"));
-                var collection = database.GetCollection<TemperatureSensor>(configuration.GetValue<string>("TemperatureSensorsDatabaseSettings:TemperatureSensorsCollectionName"));
+                var collection = database.GetCollection<SensorTemperature>(configuration.GetValue<string>("TemperatureSensorsDatabaseSettings:SensorTemperatureCollectionName"));
 
                 var data = collection.Find(p => true).Any();
 
@@ -29,23 +29,24 @@ namespace Temperature.Grpc.Extensions
                     collection.InsertManyAsync(GetTemperatureSensors());
                 }
             }
-
+            
             return host;
         }
 
-        private static IEnumerable<TemperatureSensor> GetTemperatureSensors()
+        private static IEnumerable<SensorTemperature> GetTemperatureSensors()
         {
-            var temperatureSensors = new List<TemperatureSensor>();
+            var temperatureSensors = new List<SensorTemperature>();
             var random = new Random();
 
             for(int i = 1; i <= 100; i++)
             {
                 for(int j = 0; j < 100; j++)
                 {
-                    var sensor = new TemperatureSensor()
+                    var sensor = new SensorTemperature()
                     {
                         SensorName = "Sensor" + i,
                         Value = (decimal)(random.Next(15, 30) + Math.Round(random.NextDouble(), 2)),
+                        CreatedBy = "Temperature.Grpc.Seed",
                         CreatedDate = DateTime.Now.AddMinutes(100 - j)
                     };
 

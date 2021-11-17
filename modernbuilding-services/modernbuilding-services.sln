@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{1B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Measurement", "Measurement", "{C5B1B33F-CB22-4B2A-A512-CFDB272581B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Measurement.API", "Services\Measurement\Measurement.API\Measurement.API.csproj", "{BAE81E71-27AF-44DB-8962-24BBAFB90BE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Measurement.API", "Services\Measurement\Measurement.API\Measurement.API.csproj", "{BAE81E71-27AF-44DB-8962-24BBAFB90BE0}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{4149CE92-C665-4320-826E-406D5080D744}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temperature.Grpc", "Services\Measurement\Temperature.Grpc\Temperature.Grpc.csproj", "{2B9CC2E2-A691-4A37-9CAE-2C075F3DA493}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Temperature.Grpc", "Services\Measurement\Temperature.Grpc\Temperature.Grpc.csproj", "{2B9CC2E2-A691-4A37-9CAE-2C075F3DA493}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

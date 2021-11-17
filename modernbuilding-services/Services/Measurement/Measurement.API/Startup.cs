@@ -1,3 +1,4 @@
+using Measurement.API.GrpcServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Temperature.Grpc.Protos;
 
 namespace Measurement.API
 {
@@ -25,6 +27,12 @@ namespace Measurement.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddGrpcClient<TemperatureProtoService.TemperatureProtoServiceClient>
+                (x => x.Address = new Uri(Configuration["GrpcSettings:TemperatureUrl"]));
+
+            services.AddScoped<TemperatureGrpcService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

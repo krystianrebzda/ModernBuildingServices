@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using Google.Protobuf.WellKnownTypes;
-using Temperature.Grpc.Entities;
-using Temperature.Grpc.Protos;
+using Measurement.Grpc.Entities;
+using Measurement.Grpc.Protos;
 
-namespace Temperature.Grpc.Mapper
+namespace Measurement.Grpc.Mapper
 {
-    public class TemperatureProfile : Profile
+    public class MeasurementProfile : Profile
     {
-        public TemperatureProfile()
+        public MeasurementProfile()
         {
-            CreateMap<SensorTemperature, SensorTemperatureModel>()
+            CreateMap<Temperature, TemperatureModel>()
                 .ForMember(dest => dest.Value, o => o.MapFrom(src => (double)src.Value))
                 .ForMember(dest => dest.CreatedDate, o => o.MapFrom(src => Timestamp.FromDateTime(src.CreatedDate)));
         }

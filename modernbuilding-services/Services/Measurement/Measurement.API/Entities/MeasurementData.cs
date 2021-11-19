@@ -4,6 +4,6 @@ namespace Measurement.API.Entities
 {
     public class MeasurementData
     {
-        public IEnumerable<TemperatureMeasurement> Temperatures { get; set; }
+        public IEnumerable<Temperature> Temperatures { get; set; }
     }
 }

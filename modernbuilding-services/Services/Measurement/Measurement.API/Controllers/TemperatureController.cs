@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Measurement.API.Entities;
 using Measurement.API.GrpcServices;
+using Measurement.Grpc.Protos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,7 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Temperature.Grpc.Protos;
 
 namespace Measurement.API.Controllers
 {
@@ -16,12 +16,12 @@ namespace Measurement.API.Controllers
     [ApiController]
     public class TemperatureController : ControllerBase
     {
-        private readonly TemperatureGrpcService _temperatureGrpcService;
+        private readonly MeasurementGrpcService _measurementGrpcService;
         private readonly IMapper _mapper;
 
-        public TemperatureController(TemperatureGrpcService temperatureGrpcService, IMapper mapper)
+        public TemperatureController(MeasurementGrpcService measurementGrpcService, IMapper mapper)
         {
-            _temperatureGrpcService = temperatureGrpcService ?? throw new ArgumentNullException(nameof(temperatureGrpcService));
+            _measurementGrpcService = measurementGrpcService ?? throw new ArgumentNullException(nameof(measurementGrpcService));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
@@ -31,9 +31,9 @@ namespace Measurement.API.Controllers
         {
             var measurementData = new MeasurementData();
 
-            var sensorTemperatures = await _temperatureGrpcService.GetSensorTemperatures(sensorName);
+            var temperaturesModel = await _measurementGrpcService.GetTemperatures(sensorName);
 
-            var temperatures = _mapper.Map<Google.Protobuf.Collections.RepeatedField<SensorTemperatureModel> , IEnumerable<TemperatureMeasurement>>(sensorTemperatures.SensorTemperatures);
+            var temperatures = _mapper.Map<Google.Protobuf.Collections.RepeatedField<TemperatureModel> , IEnumerable<Temperature>>(temperaturesModel.Temperatures);
 
             measurementData.Temperatures = temperatures;
 

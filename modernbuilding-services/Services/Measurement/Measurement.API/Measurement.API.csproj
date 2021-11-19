@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="..\Temperature.Grpc\Protos\temperature.proto" GrpcServices="Client">
-      <Link>Protos\temperature.proto</Link>
+    <Protobuf Include="..\Measurement.Grpc\Protos\measurement.proto" GrpcServices="Client">
+      <Link>Protos\measurement.proto</Link>
     </Protobuf>
   </ItemGroup>
 

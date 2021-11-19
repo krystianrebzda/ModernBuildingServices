@@ -2,9 +2,9 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace Temperature.Grpc.Entities
+namespace Measurement.Grpc.Entities
 {
-    public class SensorTemperature
+    public abstract class MeasurementBase
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

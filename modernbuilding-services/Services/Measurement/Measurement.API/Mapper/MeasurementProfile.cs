@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
 using Measurement.API.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Temperature.Grpc.Protos;
+using Measurement.Grpc.Protos;
 
 namespace Measurement.API.Mapper
 {
@@ -12,7 +8,7 @@ namespace Measurement.API.Mapper
     {
         public MeasurementProfile()
         {
-            CreateMap<SensorTemperatureModel, TemperatureMeasurement>()
+            CreateMap<TemperatureModel, Temperature>()
                 .ForMember(dest => dest.Value, o => o.MapFrom(src => (decimal)src.Value))
                 .ForMember(dest => dest.CreatedDate, o => o.MapFrom(src => src.CreatedDate.ToDateTime()));
         }

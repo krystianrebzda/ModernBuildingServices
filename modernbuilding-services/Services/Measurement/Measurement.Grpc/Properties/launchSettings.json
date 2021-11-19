@@ -1,12 +1,12 @@
 {
   "profiles": {
-    "Temperature.Grpc": {
+    "Measurement.Grpc": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": "true",
-      "applicationUrl": "http://localhost:6001"
+      "applicationUrl": "http://localhost:6002"
     }
   }
 }

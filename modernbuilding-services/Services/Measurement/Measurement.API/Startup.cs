@@ -1,4 +1,5 @@
 using Measurement.API.GrpcServices;
+using Measurement.Grpc.Protos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Temperature.Grpc.Protos;
 
 namespace Measurement.API
 {
@@ -29,10 +29,10 @@ namespace Measurement.API
         {
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddGrpcClient<TemperatureProtoService.TemperatureProtoServiceClient>
+            services.AddGrpcClient<MeasurementProtoService.MeasurementProtoServiceClient>
                 (x => x.Address = new Uri(Configuration["GrpcSettings:TemperatureUrl"]));
 
-            services.AddScoped<TemperatureGrpcService>();
+            services.AddScoped<MeasurementGrpcService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

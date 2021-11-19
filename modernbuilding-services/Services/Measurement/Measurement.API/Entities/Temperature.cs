@@ -2,7 +2,7 @@
 
 namespace Measurement.API.Entities
 {
-    public class TemperatureMeasurement
+    public class Temperature
     {
         public string Id { get; set; }
         public string SensorName { get; set; }
